@@ -11,7 +11,11 @@ HAVING COUNT(*) < 5
 UNION
 SELECT 
     department
+FROM (
+SELECT 
+    department, position
 FROM 
     employees
 GROUP BY department, position
-NOT HAVING position = 'Software Developer'
+    )
+WHERE position != 'Software Developer'
